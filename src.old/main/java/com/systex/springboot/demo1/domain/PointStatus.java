@@ -1,7 +1,7 @@
 package com.systex.springboot.demo1.domain;
 
 public enum PointStatus {
-    PURSCHASED,
+    PURCHASED,
     USED,
     ARGUED,
 }

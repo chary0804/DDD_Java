@@ -6,9 +6,10 @@ import com.systex.springboot.demo1.domain.common.service.PointTypeService;
 import com.systex.springboot.demo1.domain.common.service.PointTypeServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentMatcher;
 import org.mockito.ArgumentMatchers;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -19,23 +20,26 @@ public class PointTypeServiceUnitTest {
     private PointTypeService service;
 
     @BeforeEach
-    void prepare() {
+    void prepare(){
+        System.out.println("!!!!!!prepare test");
         repository = mock(PointTypeRepository.class);
         when(repository.save(ArgumentMatchers.any(PointType.class))).thenReturn(UUID.randomUUID());
         service = new PointTypeServiceImpl(repository);
     }
-
     @Test
-    void domainTest1() {
+    void domainTest1(){
+        System.out.println("test1");
         PointType type = new PointType("type1","desc1");
         UUID id = service.createPointType(type);
-        System.out.println("UUID:"+id);
+        //verify(repository).save((ArgumentMatchers.any(PointType.class)));
+        System.out.println("id="+id);
         assertNotNull(id);
     }
-
     @Test
-    void domainTest2() {
+    void demainTest2(){
+        System.out.println("test2");
         service.allTypes();
         verify(repository).getAll();
     }
+
 }

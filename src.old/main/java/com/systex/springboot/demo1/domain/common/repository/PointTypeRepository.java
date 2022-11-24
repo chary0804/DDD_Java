@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface PointTypeRepository {
-    List<PointType> getAll();
+    List<PointType>  getAll();
     UUID save(PointType type);
     Optional<PointType> findById(UUID id);
 }
